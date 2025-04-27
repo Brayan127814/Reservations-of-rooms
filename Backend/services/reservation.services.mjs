@@ -4,7 +4,7 @@ import {
 } from "../models/habitaciones.mjs";
 import detalleReserva from "../models/detalleRevservas.mjs";
 import clientes from '../models/user.model.mjs'
-import obtenerUserRol from "../buscarUser.mjs";
+// import obtenerUserRol from "../buscarUser.mjs";
 class ReservationService {
     static async createReservation({
         userID,
@@ -20,31 +20,9 @@ class ReservationService {
                     status: 401
                 };
             }
-        const userRol = obtenerUserRol()
-           let esAdmin = data.rolID === 1
-           let esRecepcionista = data.rolID ===3
-           let esCliente = data.rolID === 2
 
-           if(esAdmin || esRecepcionista){
-              if(!data.clienteID){
-                return {
-                    message:"Debes proporcionar el del cliente",
-                    status: 400
-                }
-              }
-           }
 
-             // Verificar si el cliente exite
-             let cliente = await clientes.findByPk(data.clienteID)  
-
-              if(!cliente){
-                return {
-                    message:"El cliente no esta en la base de datos",
-                    status:404
-                }
-             }
-            
-
+        
 
             // Validar campos obligatorios
             for (let campo of arrayData) {
@@ -111,7 +89,7 @@ class ReservationService {
                 fechaInicio,
                 fechaFin,
                 numeroPersonas: data.numeroPersonas,
-                clienteID: clienteID
+                clienteID: userID
             });
 
             // Calcular noches

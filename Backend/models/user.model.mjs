@@ -52,7 +52,7 @@ const cliente = connect.define("Clientes", {
 
     rolID:{
         type:DataTypes.INTEGER,
-        defaultValue:2
+        defaultValue:1
 
     }
 

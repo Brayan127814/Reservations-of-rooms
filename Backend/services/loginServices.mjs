@@ -1,13 +1,14 @@
 import cliente from '../models/user.model.mjs'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import roles from '../models/roles.mjs'
 
 
 class LoginService {
-    static async loginAuth({modelo,email,password}) {
+    static async loginAuth({ modelo, email, password }) {
         try {
-
-            if(!email || !password){
+       console.log("mi modelo:  ", modelo)
+            if (!email || !password) {
                 return {
                     message: 'Todos los campos son obligatorios'
                 }
@@ -18,6 +19,10 @@ class LoginService {
             const user = await modelo.findOne({
                 where: {
                     email
+                },
+                include:{
+                    model:roles,
+                    attributes:["roleName"]
                 }
             })
             console.log(user)
@@ -38,7 +43,8 @@ class LoginService {
             //Generar token
 
             const token = jwt.sign({
-                id: user.id
+                id: user.id,
+                roleName: user.role.roleName
             }, process.env.keySecret, {
                 expiresIn: '1h'
             })
@@ -51,7 +57,7 @@ class LoginService {
         } catch (error) {
             return {
                 message: 'Error al iniciar sesion',
-                error:error
+                error: error
             }
         }
     }

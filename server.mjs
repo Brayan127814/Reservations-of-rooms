@@ -17,6 +17,7 @@ import reservationsRoutes from './Backend/Routes/reservarionRoutes.mjs'
 
 import "./Backend/models/index.mjs"
 
+
 const app = express()
 const PORT = process.env.PORT || 5000
 app.use(express.json())

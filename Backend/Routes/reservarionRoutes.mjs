@@ -9,6 +9,7 @@ const reservationsRoutes = Router();
 
 reservationsRoutes.post('/create',tokenClient,validatorRol(["cliente"]),ReservationController.registerReservation)
 reservationsRoutes.post('/create-reservations',validarToken,validatorRol(["admin","recepcionista"]),ReservationController.registerReservation)
+reservationsRoutes.post('/reservatiosAdmins',validarToken,validatorRol(["admin","recepcionista"]),ReservationController.ReservationByAdmin)
 reservationsRoutes.get('/getAllReservations',tokenClient,validatorRol(["cliente"]),ReservationController.allReservations)
 reservationsRoutes.put('/cancel/:id',validarToken,validatorRol(["admin","recepcionista","cliente"]),ReservationController.cancelReservationS)
 
