@@ -1,0 +1,99 @@
+/* Estilos para el formulario de habitaciones */
+.form-room-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.form-room-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-room-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.form-room-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-room-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-room-label {
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-room-input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-room-input:focus {
+    outline: none;
+    border-color: #0066cc;
+}
+
+.form-room-button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.form-room-button:hover {
+    background-color: #0052a3;
+}
+
+.form-room-error {
+    color: #d32f2f;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+    .form-room-card {
+        padding: 20px;
+    }
+    
+    .form-room-title {
+        font-size: 20px;
+    }
+    
+    .form-room-input {
+        padding: 8px 12px;
+    }
+    
+    .form-room-button {
+        padding: 10px;
+    }
+}
+  

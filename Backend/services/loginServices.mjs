@@ -51,7 +51,7 @@ class LoginService {
 
             return {
                 message: 'Inicio de sesion exitoso',
-                sucess: true,
+                success: true,
                 token
             }
         } catch (error) {

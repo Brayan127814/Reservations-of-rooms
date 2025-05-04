@@ -18,9 +18,10 @@ class LoginController {
         )
 
        
-        return res.status(response.sucess ? 200 : 400).json({
+        return res.status(response.success ? 200 : 400).json({
             message: response.message,
             token: response.token || null,
+            success:response.success || null,
             error: response.error || null
         })
     }
@@ -37,8 +38,9 @@ class LoginController {
                 password:password
             })
 
-            return res.status(response.sucess ? 200 : 400).json({
+            return res.status(response.success ? 200 : 400).json({
                 message: response.message,
+                success:response.success || null,
                 token: response.token || null,
                 error: response.error || null
             })

@@ -1,0 +1,153 @@
+/* Estilos generales */
+.booking-header {
+    background-color: #003580;
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  /* Logo */
+  .logo h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .logo a {
+    text-decoration: none;
+  }
+  
+  /* Navegación principal */
+  .main-nav {
+    flex-grow: 1;
+    margin: 0 30px;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    margin-right: 20px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: #febb02;
+  }
+  
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #febb02;
+    transition: width 0.3s;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  /* Sección de autenticación */
+  .auth-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .auth-link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 15px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  
+  .auth-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .login-link {
+    border: 1px solid white;
+  }
+  
+  .login-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .header-container {
+      flex-wrap: wrap;
+    }
+    
+    .main-nav {
+      order: 3;
+      width: 100%;
+      margin: 15px 0 0 0;
+    }
+    
+    .nav-links {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .nav-links li {
+      margin: 5px 10px;
+    }
+    
+    .auth-section {
+      margin-left: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .logo {
+      margin-bottom: 15px;
+    }
+    
+    .auth-section {
+      margin: 15px 0 0 0;
+    }
+  }

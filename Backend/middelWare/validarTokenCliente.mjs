@@ -16,7 +16,7 @@ const tokenClient = (req, res, next) => {
 
     jwt.verify(token, process.env.keySecret, async (err, user) => {
         if (err) {
-            res.status(403).json({
+            return res.status(403).json({
                 message: 'Token invalido'
             })
         }
@@ -31,24 +31,30 @@ const tokenClient = (req, res, next) => {
                     model: roles,
                     attributes: ["roleName"]
                 },
-                attributes:["name","rolID"]
+                attributes: ["name", "rolID"]
             })
 
-            if(!rolUser){
+            if (!rolUser) {
                 return res.status(401).json({
                     message: 'No hay rol'
                 })
+            }
+            if (!rolUser || !rolUser.role || rolUser.role.roleName !== "cliente") {
+                    return  res.status (403).json({
+                        message:"No tienes los permisos para esta accion"
+                    })
             }
 
             const nameRol = rolUser.role ? rolUser.role.roleName : null
 
             console.log('Rol encontrado  ', nameRol)
+            console.log("Usuario encontrado:", JSON.stringify(rolUser, null, 2));
 
-            req.user ={
-                id:user.id,
-                name:rolUser.name,
-                rolID:rolUser.rolID,
-                roleName:nameRol
+            req.user = {
+                id: user.id,
+                name: rolUser.name,
+                rolID: rolUser.rolID,
+                roleName: nameRol
             }
 
             next()
@@ -57,7 +63,7 @@ const tokenClient = (req, res, next) => {
 
             return res.status(401).json({
                 message: 'Error en la validacion del token',
-                error:error.message
+                error: error.message
             })
         }
     })

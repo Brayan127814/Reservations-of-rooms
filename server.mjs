@@ -14,6 +14,7 @@ import authRoute from './Backend/Routes/authRoutes.mjs'
 import routesPerson from './Backend/Routes/personalRoutes.mjs'
 import roomRoutes from './Backend/Routes/roomsRoutes.mjs'
 import reservationsRoutes from './Backend/Routes/reservarionRoutes.mjs'
+import cors from 'cors'
 
 import "./Backend/models/index.mjs"
 
@@ -21,6 +22,7 @@ import "./Backend/models/index.mjs"
 const app = express()
 const PORT = process.env.PORT || 5000
 app.use(express.json())
+app.use(cors())
 app.use('/auth', authRoute)
 app.use('/personal', routesPerson)
 app.use('/rooms', roomRoutes)

@@ -18,8 +18,8 @@ class ReservationByAdmin {
 
             // Buscar el cliente en la base de datos
             const cliente = await buscarCliente(cedula);
-            console.log(cliente)
-            if (!cliente) {
+            console.log("cliente que fue encontrado", cliente)
+            if (!cliente.success) {
                 return {
                     message: "Se debe registrar el cliente antes de continuar",
                     status: 404
@@ -28,7 +28,7 @@ class ReservationByAdmin {
 
             // El cliente existe, proceder con la reserva
             const clienteID = cliente.data.id; // ID del cliente para usar en la reserva
-    console.log("cliente encontrado  " , clienteID)
+            console.log("cliente encontrado  ", clienteID)
             // Aquí seguirías con la validación de campos y creación de la reserva como en tu servicio normal
             // pero usando clienteID en vez de userID
 
@@ -105,7 +105,7 @@ class ReservationByAdmin {
                 fechaInicio,
                 fechaFin,
                 numeroPersonas: data.numeroPersonas,
-                clienteID:clienteID
+                clienteID: clienteID
             }
             )
 

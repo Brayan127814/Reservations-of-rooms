@@ -1,3 +1,4 @@
+import { where } from "sequelize"
 import {
     rooms
 } from "../models/habitaciones.mjs"
@@ -236,6 +237,34 @@ class ServiceRooms {
         }
 
     }
+// Servicio para obtener todas las habitaciones disponibles
+static async getAllRoom(estado) {
+    try {
+        const room = await rooms.findAll({
+            where: { estado }
+        });
+
+        // Comprobamos si no hay habitaciones
+        if (room.length === 0) {
+            return {
+                message: 'No hay habitaciones para mostrar',
+                status: 404
+            };
+        }
+
+        return {
+            data: room,
+            status: 200
+        };
+    } catch (error) {
+        // Manejo de errores
+        console.error(error);
+        return {
+            message: 'Ocurrió un error al obtener las habitaciones',
+            status: 500
+        };
+    }
+}
 
 }
 

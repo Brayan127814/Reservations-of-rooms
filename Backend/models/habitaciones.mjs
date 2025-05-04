@@ -37,7 +37,19 @@ export const rooms = connect.define(
             type: DataTypes.ENUM("Ocupada", "Disponible"),
             defaultValue: "Disponible",
             allowNull: false
-        }
+        },
+        imageUrl: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+              notEmpty: true,
+              isUrl: {
+                msg: "Debe ser una URL válida"
+              }
+            },
+            defaultValue: "https://images.unsplash.com/photo-1566669437687-7040a6926753?w=400&h=300"
+          }
+    
     },
     {
         indexes: [
