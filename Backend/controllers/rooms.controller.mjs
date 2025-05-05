@@ -100,11 +100,26 @@ class RoomController {
                 status: response.status || 200,
                 error: null
             });
-            
+
         } catch (error) {
 
             return res.status(500).json({ message: 'Error interno del servidor' })
 
+        }
+    }
+
+    static async roomByID(req, res) {
+        try {
+            const idroom = req.params.id
+            const response = await ServiceRooms.getRoomByID(idroom)
+
+            return res.status(response.status).json({
+                message: response.message,
+                data: response.data || null,
+                error: response.error || null
+            })
+        } catch (error) {
+            return res.status(500).json({ message: 'Error interno del servidor' })
         }
     }
 }

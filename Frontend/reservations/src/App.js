@@ -7,16 +7,19 @@ import Header from './componentes/Headers';
 import './App.css';
 import Home from './componentes/Home.jsx';
 import RoomGrid from './pages/imagenes.jsx';
+import ReservationForm from './pages/formReservation.jsx';
+
 
 
 function App() {
   return (
 
     <Router>
-   
+   <Header></Header> 
       <Routes>
         <Route  path='/'element={<Home></Home>}/>
         <Route path='/registro' element={<Registro></Registro>}></Route>
+        <Route path='/reservar/:idRoom' element={<ReservationForm></ReservationForm>}></Route>
       </Routes>
     </Router>
   )

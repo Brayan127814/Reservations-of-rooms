@@ -237,35 +237,62 @@ class ServiceRooms {
         }
 
     }
-// Servicio para obtener todas las habitaciones disponibles
-static async getAllRoom(estado) {
-    try {
-        const room = await rooms.findAll({
-            where: { estado }
-        });
+    // Servicio para obtener todas las habitaciones disponibles
+    static async getAllRoom(estado) {
+        try {
+            const room = await rooms.findAll({
+                where: { estado }
+            });
 
-        // Comprobamos si no hay habitaciones
-        if (room.length === 0) {
+            // Comprobamos si no hay habitaciones
+            if (room.length === 0) {
+                return {
+                    message: 'No hay habitaciones para mostrar',
+                    status: 404
+                };
+            }
+
             return {
-                message: 'No hay habitaciones para mostrar',
-                status: 404
+                data: room,
+                status: 200
+            };
+        } catch (error) {
+            // Manejo de errores
+            console.error(error);
+            return {
+                message: 'Ocurrió un error al obtener las habitaciones',
+                status: 500
             };
         }
-
-        return {
-            data: room,
-            status: 200
-        };
-    } catch (error) {
-        // Manejo de errores
-        console.error(error);
-        return {
-            message: 'Ocurrió un error al obtener las habitaciones',
-            status: 500
-        };
     }
-}
+    // consultr habitaciones por id
+    static async getRoomByID(idroom,) {
+        try {
+            const room = await rooms.findOne({
+                where: { id: idroom }
+            })
 
+            if (!room) {
+                return {
+                    message: 'No se encotro habitacion',
+                    status: 404
+                }
+            }
+
+            return {
+                
+                data: room,
+                status: 200
+            }
+        } catch (error) {
+                 // Manejo de errores
+            console.error(error);
+            return {
+                message: 'Ocurrió un error al obtener las habitaciones',
+                status: 500
+            }
+        }
+    }
 }
 
 export default ServiceRooms

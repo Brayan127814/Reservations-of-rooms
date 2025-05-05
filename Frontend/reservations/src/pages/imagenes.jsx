@@ -1,11 +1,15 @@
 import ServiceRoom from "../api/rooms.mjs";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "../stilos/img.css"; // Archivo CSS separado
 
 function RoomGrid() {
     const [habitaciones, setHabitaciones] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate()
+    
 
     useEffect(() => {
         const obtenerHabitaciones = async () => {
@@ -33,6 +37,10 @@ function RoomGrid() {
         );
     }
 
+    const handleReservetionClick = async (idRoom) => {
+        navigate(`/reservar/${idRoom}`)
+    }
+
     return (
         <div className="room-grid-container">
             <div className="rooms-grid">
@@ -50,7 +58,7 @@ function RoomGrid() {
                             <p className="room-description">{habitacion.descripcion}</p>
                             <div className="room-footer">
                                 <span className="room-price">${habitacion.precio || 'Consultar'}</span>
-                                <button className="reserve-button">
+                                <button className="reserve-button" onClick={()=>handleReservetionClick(habitacion.id)}>
                                     Reservar
                                 </button>
                             </div>

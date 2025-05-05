@@ -1,0 +1,93 @@
+:root {
+    --primary-color: #ff3366;
+    --background-color: #f9f9f9;
+    --text-color: #333;
+    --border-color: #ddd;
+  }
+  
+  .form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-container h2 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+  }
+  
+  .room-details {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .room-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .room-details p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .reserve-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .reserve-button:hover {
+    background-color: #e62e5e;
+  }
+  
+  .error-message {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+  
+  /* Responsive para móvil */
+  @media (max-width: 480px) {
+    .form-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+  }
+  

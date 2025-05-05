@@ -1,4 +1,4 @@
-const url = "http://localhost:5000/personal"
+const url = "http://localhost:5000/auth"
 
 
 const InicioDeSesion = async (email, password) => {

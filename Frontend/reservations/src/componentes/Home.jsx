@@ -9,7 +9,7 @@ function Home() {
 
     return (
                 <div>
-                    <Header></Header>
+                    
                     <Banner></Banner>
                     <RoomGrid></RoomGrid>
                 </div>

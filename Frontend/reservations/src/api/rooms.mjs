@@ -1,5 +1,10 @@
 const urlRoom = "http://localhost:5000/rooms"
 
+fetch(urlRoom)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error))
+
 class ServiceRoom {
 
     static async RegistrarHabitacion(tipo, piso, numeroHabitacion, descripcion, capacidad, precio, imageUrl) {
@@ -64,6 +69,33 @@ class ServiceRoom {
 
         }
     }
+
+    static async getRoomID(idroom) {
+        try {
+            const response = await fetch(`${urlRoom}/getRoomByID/${idroom}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+    
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.message || 'No se encontraron habitaciones');
+            }
+    
+            const result = await response.json();
+    
+            if (!result || !result.data) {
+                throw new Error('No se encontraron habitaciones');
+            }
+    
+            return result; // <-- este objeto debe tener .data
+        } catch (error) {
+            throw new Error('No se encontró la habitación: ' + error.message);
+        }
+    }
+    
 }
 
 export default ServiceRoom

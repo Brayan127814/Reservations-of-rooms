@@ -15,6 +15,7 @@ roomRoutes.post("/register", validarToken, validatorRol(["admin"]), RoomControll
 roomRoutes.get('/status/:estado', validarToken, validatorRol(["admin", "recepcionista", "cliente"]), RoomController.RoomsByStatus)
 roomRoutes.put('/update/:id', validarToken, validatorRol(["admin"]), RoomController.updateRoom)
 roomRoutes.get('/',RoomController.obtenerhatitaciones)
+roomRoutes.get('/getRoomByID/:id',RoomController.roomByID)
 export default roomRoutes
 
 

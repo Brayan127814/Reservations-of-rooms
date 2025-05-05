@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import ServiceRoom from "../api/rooms.mjs";
 import "../stilos/room.css";
 
@@ -11,6 +12,7 @@ function FormRoom() {
     const [precio, setPrecio] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [error, setError] = useState(false);
+    
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -37,6 +39,8 @@ function FormRoom() {
             setError(error.message);
         }
     };
+
+  
 
     return (
         <div className="form-container">
